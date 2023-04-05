@@ -8,5 +8,9 @@ def menu_list
   puts '6 - List all music albums'
   puts '7 - List all movies'
   puts '8 - List of games'
-  puts '9 - Exit'
+  puts '9 - List of genres'
+  puts '10 - List all labels'
+  puts '11 - List all authors'
+  puts '12 - List all sources'
+  puts '13 - Exit'
 end

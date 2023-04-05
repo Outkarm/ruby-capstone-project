@@ -22,6 +22,14 @@ class Select
     when 8
       @app.list_all_games
     when 9
+        @app.list_all_genres
+    when 10
+        @app.list_all_labels
+    when 11
+        @app.list_all_authors
+    when 12
+        @app.list_all_sources
+    when 13
       puts 'Thanks for using this app'
       exit
     else
