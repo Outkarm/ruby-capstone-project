@@ -6,9 +6,10 @@ class Select
     4 => :add_game,
     5 => :list_all_books,
     6 => :list_all_music_albums,
-    7 => :list_all_movies,
-    8 => :list_all_games,
-    9 => :exit_app
+    7 => :list_all_genres,
+    8 => :list_all_movies,
+    9 => :list_all_games,
+    0 => :exit_app
   }.freeze
 
   def initialize
@@ -48,6 +49,10 @@ class Select
 
   def list_all_music_albums
     @app.list_all_music_albums
+  end
+
+  def list_all_genres
+    @app.list_all_genres
   end
 
   def list_all_movies
