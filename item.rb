@@ -7,7 +7,7 @@ class Item
     @id = Random.rand(1..1000)
     @published_date = publish_date
     @archived = archived
-    @label = nil
+    @label = label
     @genre = nil
     @author = nil
     @source = nil
