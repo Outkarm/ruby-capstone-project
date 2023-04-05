@@ -8,5 +8,14 @@ class App
         @music_albums = music_albums
         @genres = genres
     end
-
+    def list_music_album
+        if @music_albums.empty?
+          puts 'No music albums found'
+        else
+          puts '# Music Albums'
+          @music_albums.each_with_index do |music_album, i|
+            puts "#{i + 1}. #{music_album}"
+          end
+        end
+      end
 end
