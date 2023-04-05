@@ -10,6 +10,7 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
     @genres = genres
   end
+
   def can_be_archived?
     super && @on_spotify
   end
