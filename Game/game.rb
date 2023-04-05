@@ -13,7 +13,6 @@ class Game
 
             else
                 false
-            end
         end
     end
 
