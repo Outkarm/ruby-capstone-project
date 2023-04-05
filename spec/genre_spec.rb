@@ -13,7 +13,25 @@ describe Genre do
     end
 
     it 'should return correct Genre name' do
-      expect(@genre.name).to eql 'Comedy'
+      expect(@genre.name).to eql 'Rock'
+    end
+  end
+  describe '#add_item' do
+    context 'before adding any item' do
+      it 'should have an empty list' do
+        expect(@genre.items.length).to eql 0
+      end
+    end
+
+    context 'after adding a music album' do
+      it 'should contain exactly one item' do
+        @genre.add_item(@music_album)
+        expect(@genre.items.length).to eql 1
+      end
+
+      it 'should return the correct music album' do
+        expect(@genre.items[0]).to eql @music_album
+      end
     end
   end
 end
