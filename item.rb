@@ -9,12 +9,17 @@ class Item
     @archived = false
     @label = nil
     @genre = nil
-    @author = nil
+    @author = author
     @source = nil
   end
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  def add_author(author)
+    @author = author
+    author.items << self unless author.items.include?(self)
   end
 
   private
