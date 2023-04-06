@@ -1,6 +1,6 @@
 class Author
   attr_accessor :first_name, :last_name
-  attr_reader :items
+  attr_reader :items, :id
 
   def initialize(first_name, last_name)
     # Generate a random ID between 1 and 1000

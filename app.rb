@@ -8,8 +8,8 @@ class App
   attr_accessor :game, :author
 
   def initialize
-    @game = game
-    @authors = author
+    @game = []
+    @authors = []
   end
 
   def add_game

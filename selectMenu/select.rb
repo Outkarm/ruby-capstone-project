@@ -6,10 +6,13 @@ def select_option(opt, app)
     4 => :add_game,
     5 => :list_all_books,
     6 => :list_all_music_albums,
-    7 => :list_all_genres,
-    8 => :list_all_movies,
-    9 => :list_all_games,
-    0 => :exit_app
+    7 => :list_all_movies,
+    8 => :list_all_games,
+    9 => :list_all_genres,
+    10 => :list_all_lables,
+    11 => :list_all_authors,
+    12 => :list_all_sources,
+    13 => :exit_app
   }
 
   action = options[opt]
@@ -34,6 +37,12 @@ def select_option(opt, app)
     app.list_all_movies
   when :list_all_games
     app.list_all_games
+  when :list_all_lables
+    app.list_all_lables
+  when :list_all_authors
+    app.list_all_authors
+  when :list_all_sources
+    app.list_all_sources
   when :exit_app
     puts 'Thanks for using this app'
     exit
