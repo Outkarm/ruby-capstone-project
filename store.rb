@@ -1,8 +1,8 @@
 require 'json'
 
 class Store
-   music_file = './data/music_album.json' 
-   label_file = './data/label.json'
+   music_file = './data/music_album.json'.freeze
+   label_file = './data/label.json'.freeze
 
    def initialize(app)
       @app = app
@@ -18,11 +18,11 @@ class Store
    private
    def save_label
       label = @app.label_list.map(&:to_h)
-      File.write(LABEL_FILE, JSON.generate(label))
+      File.write(label_file, JSON.generate(label))
     end
   
     def save_music_albums
       music_album = @app.music_album_list.map(&:to_h)
-      File.write(MUSIC_ALBUM_FILE, JSON.generate(music_album))
+      File.write(music_file, JSON.generate(music_album))
     end
 end
