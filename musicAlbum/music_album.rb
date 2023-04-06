@@ -19,6 +19,7 @@ class MusicAlbum < Item
     "<#{self.class} ID: #{@id}> " \
       "[name: #{@name}, publish_date: #{@publish_date}, on_spotify: #{@on_spotify}]"
   end
+
   def to_h
     { id: @id, name: @name, artist: @artist, publish_date: @publish_date.to_s, on_spotify: @on_spotify }
   end
