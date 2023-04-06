@@ -47,7 +47,8 @@ class App
     puts 'Enter label color of the book:\n'
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
-    @label << new_label
+    @labels << new_label
+    save_data(@labels, './data/label.json')
     colorize_output(32, "label '#{label_title}' was added successfully 🤹‍♂️✅!")
   end
 
@@ -65,6 +66,7 @@ class App
   end
 
   def list_all_labels
+    @labels = read_data('./data/label.json')
     if @labels.empty?
       colorize_output(31, 'No labels found')
     else
