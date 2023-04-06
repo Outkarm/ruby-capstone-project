@@ -40,7 +40,7 @@ class App
   end
 
   def add_label
-    puts 'Enter the title label of the book:\n'
+    puts 'Enter the title of label of the book:\n'
     label_title = gets.chomp
     puts 'Enter label color of the book:\n'
     label_color = gets.chomp
