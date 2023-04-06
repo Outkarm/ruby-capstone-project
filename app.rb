@@ -41,7 +41,7 @@ class App
 
   def list_all_book
     if @book.empty?
-      colorize_output(31, 'No book found')
+      colorize_output(31, 'No books found')
     else 
       puts 'Book List:'
       @books.each_with_index do |book, index|
@@ -50,4 +50,14 @@ class App
     end
   end
 
-  
+  def list_all_labels
+    if @labels.empty?
+      colorize_output(31, 'No labels found')
+    else
+      puts "------------------------\n"
+      @label.each do |label|
+        print "ID: #{label.id} , Label-Title: #{label.title} , Color: #{label.color}\n"
+      end
+      puts "--------------------------\n\n"
+    end
+  end
