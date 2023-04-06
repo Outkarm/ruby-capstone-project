@@ -1,7 +1,11 @@
+require_relative 'selectMenu/select'
+require_relative 'selectMenu/menu_list'
 require_relative 'classes/book'
 require_relative 'classes/label'
 
 class App
+  attr_accessor :books, :label
+
   def initialize
     @books = []
     @label = []
@@ -16,19 +20,21 @@ class App
   end
 
   def add_book
-    puts 'Enter the name of the book'
+    puts 'Enter the name of the book:'
     name = gets.chomp
-    puts 'Enter the publisher'
+    puts 'Enter the publisher: '
     publisher = gets.chomp
-    puts 'Enter the state of the book: good / bad'
+    puts 'Please enter the author name:'
+    author = gets.chomp
+    puts 'Please enter state of the book: good or bad'
     cover_state = gets.chomp
-    if cover_state !='good' && cover_state != 'bad'
-      puts 'Not a valid state'
+    if cover_state != 'good' && cover_state != 'bad'
+      puts 'Invalid state'
       return
     end
     puts 'Enter the published date of the book: YY-MM-DD'
     date = gets.chomp
-    book = Book.new(name, publisher, cover_state, publish_date)
+    book = Book.new(name, publisher, cover_state, author, date)
     @books << book
     puts 'Enter the title label of the book:\n'
     label_title = gets.chomp
@@ -36,17 +42,18 @@ class App
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
     @label << new_label
-    colorize_output(32, "Book '#{name}' was added successfully!")
+    colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
   end
 
-  def list_all_book
-    if @book.empty?
-      colorize_output(31, 'No books found')
-    else 
+  def list_all_books
+    if @books.empty?
+      colorize_output(31, 'No books found 🚫 ')
+    else
       puts 'Book List:'
       @books.each_with_index do |book, index|
-        print "#{index + 1}-Name: #{book['name']}, Publisher: #{book['publisher']},
-         Cover state: #{book['cover_state']}, Publish date: #{book['publish_date']}\n\n"
+        print "#{index + 1}-Name: #{book.name}, Publisher: #{book.publisher},
+         Cover state: #{book.cover_state}, Publish date: #{book.publish_date}\n\n"
+      end
     end
   end
 
@@ -61,3 +68,4 @@ class App
       puts "--------------------------\n\n"
     end
   end
+end
