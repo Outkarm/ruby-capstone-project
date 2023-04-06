@@ -16,4 +16,8 @@ class Label < Item
     items << item
     item.label = self
   end
+
+  def to_h
+    { id: @id, title: @title, color: @color.to_s }
+  end
 end

@@ -8,13 +8,18 @@ class Item
     @publish_date = publish_date
     @archived = archived
     @label = label
-    @genre = nil
+    @genre = genre
     @author = nil
     @source = nil
   end
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  def add_genre(genre)
+    @genre = genre
+    genre.items << self unless genre.items.include?(self)
   end
 
   private
