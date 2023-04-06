@@ -1,4 +1,4 @@
-require_relative 'selectMenu/menuList'
+require_relative 'selectMenu/menu_list'
 require_relative 'selectMenu/select'
 
 class Main

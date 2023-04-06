@@ -12,7 +12,7 @@ class Select
     0 => :exit_app
   }.freeze
 
-  def initialize
+  def initialize()
     @app = nil
   end
 
