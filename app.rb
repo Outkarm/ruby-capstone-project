@@ -36,13 +36,17 @@ class App
     date = gets.chomp
     book = Book.new(name, publisher, cover_state, author, date)
     @books << book
+    colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
+  end
+
+  def add_label
     puts 'Enter the title label of the book:\n'
     label_title = gets.chomp
     puts 'Enter label color of the book:\n'
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
     @label << new_label
-    colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
+    colorize_output(32, "label '#{label_title}' was added successfully 🤹‍♂️✅!")
   end
 
   def list_all_books

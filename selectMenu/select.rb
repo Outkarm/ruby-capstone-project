@@ -3,6 +3,7 @@ def select_option(opt, app)
     1 => :add_book,
     2 => :add_music_album,
     3 => :add_movie,
+    20 => :add_label,
     4 => :add_game,
     5 => :list_all_books,
     6 => :list_all_music_albums,
@@ -22,6 +23,8 @@ def select_option(opt, app)
     app.add_music_album
   when :add_movie
     app.add_movie
+  when :add_label
+    app.add_label
   when :add_game
     app.add_game
   when :list_all_books
