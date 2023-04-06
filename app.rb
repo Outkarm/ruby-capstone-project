@@ -2,14 +2,20 @@ require_relative 'selectMenu/select'
 require_relative 'selectMenu/menu_list'
 require_relative 'classes/book'
 require_relative 'classes/label'
+require_relative './music_album'
+require_relative './genre'
 
 class App
   attr_accessor :books, :label
+  attr_accessor :music_albums, :genres
 
   def initialize
     @books = []
     @label = []
+    @music_albums = music_albums
+    @genres = genres
   end
+  
 
   def colorize_output(color_code, statements)
     puts "\e[#{color_code}m#{statements}\e[0m"
@@ -57,11 +63,8 @@ class App
       @books.each_with_index do |book, index|
         print "#{index + 1}-Name: #{book.name}, Publisher: #{book.publisher},
          Cover state: #{book.cover_state}, Publish date: #{book.publish_date}\n\n"
-      end
-    end
-  end
-
-  def list_all_labels
+         
+         def list_all_labels
     if @labels.empty?
       colorize_output(31, 'No labels found')
     else
@@ -71,5 +74,42 @@ class App
       end
       puts "--------------------------\n\n"
     end
+  end
+
+  def list_all_music_albums
+    if @music_albums.empty?
+      puts 'No music albums found'
+    else
+      puts '# Music Albums'
+      @music_albums.each_with_index do |music_album, i|
+        puts "#{i + 1}. #{music_album}"
+      end
+    end
+  end
+
+
+  def list_all_genres
+    if @genres.empty?
+      puts 'No music genres found'
+    else
+      puts '# Genres'
+      @genres.each_with_index do |genre, i|
+        puts "#{i + 1}. #{genre}"
+      end
+    end
+  end
+
+  def add_music_album
+    puts '-------------------------'
+    puts ' Create music album'
+    puts 'Album name:'
+    name = gets.chomp
+    puts 'On Spotify (y/n)?: '
+    on_spotify = gets.chomp.downcase == 'y'
+    publish_date = Input.get_date('Published Date: ')
+
+    music_album = MusicAlbum.new(name, publish_date, on_spotify)
+    @music_albums << music_album
+    puts '*New album added successfully!', music_album.to_s
   end
 end
