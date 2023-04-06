@@ -38,3 +38,16 @@ class App
     @label << new_label
     colorize_output(32, "Book '#{name}' was added successfully!")
   end
+
+  def list_all_book
+    if @book.empty?
+      colorize_output(31, 'No book found')
+    else 
+      puts 'Book List:'
+      @books.each_with_index do |book, index|
+        print "#{index + 1}-Name: #{book['name']}, Publisher: #{book['publisher']},
+         Cover state: #{book['cover_state']}, Publish date: #{book['publish_date']}\n\n"
+    end
+  end
+
+  
