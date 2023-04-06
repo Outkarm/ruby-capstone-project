@@ -1,8 +1,6 @@
-
 require_relative 'selectMenu/menu_list'
 require_relative 'selectMenu/select'
 require_relative 'app'
-
 
 class Main
   def start
