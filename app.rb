@@ -1,3 +1,5 @@
+require_relative './music_album'
+require_relative './genre'
 require_relative 'selectMenu/menu_list'
 require_relative 'selectMenu/select'
 require_relative 'item'
@@ -5,13 +7,15 @@ require_relative 'Game/game'
 require_relative 'Game/author'
 
 class App
-  attr_accessor :game, :author
+  attr_accessor :music_albums, :genres, :game, :author
 
   def initialize
-    @game = []
-    @authors = []
+    @music_albums = music_albums
+    @genres = genres
+    @game = game
+    @author = author
   end
-
+  
   def add_game
     puts 'Adding a new game...'
     print 'Enter game title: '
@@ -52,5 +56,40 @@ class App
     @authors.each do |author|
       puts "ID: #{author.id}, Name: #{author.full_name}"
     end
+
+  def list_all_music_albums
+    if @music_albums.empty?
+      puts 'No music albums found'
+    else
+      puts '# Music Albums'
+      @music_albums.each_with_index do |music_album, i|
+        puts "#{i + 1}. #{music_album}"
+      end
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts 'No music genres found'
+    else
+      puts '# Genres'
+      @genres.each_with_index do |genre, i|
+        puts "#{i + 1}. #{genre}"
+      end
+    end
+  end
+
+  def add_music_album
+    puts '-------------------------'
+    puts ' Create music album'
+    puts 'Album name:'
+    name = gets.chomp
+    puts 'On Spotify (y/n)?: '
+    on_spotify = gets.chomp.downcase == 'y'
+    publish_date = Input.get_date('Published Date: ')
+
+    music_album = MusicAlbum.new(name, publish_date, on_spotify)
+    @music_albums << music_album
+    puts '*New album added successfully!', music_album.to_s
   end
 end
