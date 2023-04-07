@@ -1,10 +1,10 @@
 require 'json'
 
 class Store
+  MUSIC_FILE = './data/music_album.json'.freeze
+  GENRE_FILE = './data/label.json'.freeze
   def initialize(app)
     @app = app
-    @music_file = './data/music_album.json'.freeze
-    @genre_file = './data/label.json'.freeze
   end
 
   def save_data
@@ -13,8 +13,8 @@ class Store
   end
 
   def load_data
-    load_genre
-    load_music_album
+    load_genre(GENRE_FILE, @app.genres)
+    load_music_album(MUSIC_FILE, @app.music_albums)
   end
 
   private
@@ -46,5 +46,15 @@ class Store
       on_spotify = music_album['on_spotify']
       array << MusicAlbum.new(name, artist, publish_date, on_spotify)
     end
+  end
+  def read_file(filename)
+    return [] unless File.exist?(filename)
+
+    file = File.open(filename)
+    data = file.read
+    file.close
+    return JSON.parse(data) unless data.empty?
+
+    []
   end
 end

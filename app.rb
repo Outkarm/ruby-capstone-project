@@ -1,5 +1,5 @@
-require_relative './music_album'
-require_relative './genre'
+require_relative './musicAlbum/music_album'
+require_relative './musicAlbum/genre'
 require_relative './store'
 
 class App
@@ -9,7 +9,7 @@ class App
     @music_albums = []
     @genres = []
     @store = Store.new(self)
-    @storage.load_data
+    @store.load_data
   end
 
   def list_all_music_albums
