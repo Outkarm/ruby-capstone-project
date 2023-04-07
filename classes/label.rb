@@ -18,6 +18,10 @@ class Label < Item
   end
 
   def to_h
-    { label_id: @id, title: @title, color: @color }
+    {
+      label_id: @id,
+      title: @title,
+      color: @color
+    }
   end
 end

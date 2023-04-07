@@ -8,6 +8,7 @@ class Main
     menu_list
     app = App.new
     loop do
+      menu_list
       opt = gets.chomp.to_i
       select_option(opt, app)
     end

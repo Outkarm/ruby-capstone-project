@@ -10,12 +10,19 @@ class Item
     @label = label
     @name = name
     @genre = genre
+    @authors = author
+    @genre = nil
     @author = nil
     @source = nil
   end
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  def add_author(author)
+    @authors = author
+    author.items << self unless author.items.include?(self)
   end
 
   def add_genre(genre)

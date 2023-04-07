@@ -13,6 +13,26 @@ class Book < Item
     @author = author
   end
 
+  def to_h
+    {
+      name: @name,
+      publisher: @publisher,
+      cover_state: @cover_state,
+      publish_date: @publish_date
+    }
+  end
+
+  def to_s
+    {
+      name: @name,
+      publisher: @publisher,
+      cover_state: @cover_state,
+      publish_date: @publish_date
+    }
+  end
+
+  # private
+
   def can_be_archived?
     if super || cover_state == 'bad'
       true
