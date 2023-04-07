@@ -19,32 +19,12 @@ class App
     @label = []
     @music_albums = music_albums
     @genres = genres
+    @labels ||= []
     @games = []
     @authors = []
-  end
-
-  def add_game
-    puts 'Adding a new game...'
-    print 'Enter game title: '
-    title = gets.chomp
-    print 'Enter game multiplayer (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter game last played date (YYYY-MM-DD): '
-    last_played_at = gets.chomp
-
-    print 'Enter author first name: '
-    first_name = gets.chomp
-    print 'Enter author last name: '
-    last_name = gets.chomp
-    game = Game.new(title, multiplayer, last_played_at, first_name, last_name)
-    author = Author.new(first_name, last_name)
-    @games << game.to_h
-    @authors << author.to_h
-    puts "Game '#{title}' added with ID #{game.id}."
-    puts "Author '#{author.full_name}' added with ID #{author.id}."
-    @labels ||= []
     @store = Store.new(self)
     @store.load_data
+  end
   end
 
   def colorize_output(color_code, statements)
@@ -79,42 +59,60 @@ class App
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
     @labels << new_label
-    save_data(@labels, './data/label.json')
-    save_data(@books, './data/book.json')
+    # save_data(@labels, './data/label.json')
+    # save_data(@books, './data/book.json')
     colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
     puts '---------------------------------------------------'
   end
 
   def list_all_books
-    @books = read_data('./data/book.json')
+    # @books = read_data('./data/book.json')
     if @books.empty?
       colorize_output(31, 'No books found 🚫 ')
     else
       puts 'Book List:'
       @books.each_with_index do |book, index|
-        print "#{index + 1}-Name: #{book['name']}, Publisher: #{book['publisher']},
-       Cover state: #{book['cover_state']}, Published date: #{book['publish_date']}, Author: #{book['author']}\n\n"
+        print "#{index + 1}-Name: #{book.name}, Publisher: #{book.publisher},
+       Cover state: #{book.cover_state}, Published date: #{book.publish_date}, Author: #{book.author}\n\n"
       end
     end
-    @music_albums = []
-    @genres = []
+  end
+
+  def add_game
+    puts 'Adding a new game...'
+    print 'Enter game title: '
+    title = gets.chomp
+    print 'Enter game multiplayer (true/false): '
+    multiplayer = gets.chomp.downcase == 'true'
+    print 'Enter game last played date (YYYY-MM-DD): '
+    last_played_at = gets.chomp
+
+    print 'Enter author first name: '
+    first_name = gets.chomp
+    print 'Enter author last name: '
+    last_name = gets.chomp
+    game = Game.new(title, multiplayer, last_played_at, first_name, last_name)
+    author = Author.new(first_name, last_name)
+    @games << game.to_h
+    @authors << author.to_h
+    puts "Game '#{title}' added with ID #{game.id}."
+    puts "Author '#{author.full_name}' added with ID #{author.id}."
+    @labels ||= []
     @store = Store.new(self)
     @store.load_data
   end
 
-  def list_all_games
-    if @games.empty?
-      puts 'No Games found'
-    else
-      puts '# Games'
-      @games.each_with_index do |game, i|
-        puts "#{i + 1}. #{game}"
-      end
-    end
+  def colorize_output(color_code, statements)
+    puts "\e[#{color_code}m#{statements}\e[0m"
   end
 
+  def colorize_outprint(color_code, statements)
+    print "\e[#{color_code}m#{statements}\e[0m"
+  end
+
+  
   def list_all_labels
-    @labels = read_data('./data/label.json')
+    # @labels = read_data('./data/label.json')
     if @labels.nil? || @labels.empty?
       colorize_output(31, 'No labels found')
     else
@@ -124,6 +122,21 @@ class App
         print "ID: #{label['label_id']} , Label-Title: #{label['title']} , Color: #{label['color']}\n"
       end
       puts "--------------------------\n\n"
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts 'No music genres found'
+      
+  def list_all_games
+    if @games.empty?
+      puts 'No Games found'
+    else
+      puts '# Games'
+      @games.each_with_index do |game, i|
+        puts "#{i + 1}. #{game}"
+      end
     end
   end
 
