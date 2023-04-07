@@ -2,7 +2,7 @@ require 'json'
 
 class Store
   MUSIC_FILE = './data/music_album.json'.freeze
-  GENRE_FILE = './data/genre.json'
+  GENRE_FILE = './data/genre.json'.freeze
   def initialize(app)
     @app = app
   end
