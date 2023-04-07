@@ -4,7 +4,7 @@ require_relative 'classes/book'
 require_relative 'classes/label'
 # require_relative '.musicAlbum/music_album'
 # require_relative './genre'
-require_relative 'data/preserve'
+# require_relative 'data/preserve'
 
 class App
   attr_accessor :books, :label, :music_albums, :genres
@@ -49,14 +49,14 @@ class App
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
     @labels << new_label
-    save_data(@labels, './data/label.json')
-    save_data(@books, './data/book.json')
+    # save_data(@labels, './data/label.json')
+    # save_data(@books, './data/book.json')
     colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
     puts '---------------------------------------------------'
   end
 
   def list_all_books
-    @books = read_data('./data/book.json')
+    # @books = read_data('./data/book.json')
     if @books.empty?
       colorize_output(31, 'No books found 🚫 ')
     else
@@ -80,7 +80,7 @@ class App
   end
 
   def list_all_labels
-    @labels = read_data('./data/label.json')
+    # @labels = read_data('./data/label.json')
     if @labels.nil? || @labels.empty?
       colorize_output(31, 'No labels found')
     else
