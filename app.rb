@@ -9,7 +9,7 @@ class App
 
   def initialize
     @books = []
-    @label = []
+    @labels ||= []
   end
 
   def colorize_output(color_code, statements)
@@ -21,36 +21,48 @@ class App
   end
 
   def add_book
-    puts 'Enter the name of the book:'
+    puts '---------------------------------------'
+    print 'Enter the name of the book: '
     name = gets.chomp
-    puts 'Enter the publisher: '
+    print 'Enter the publisher: '
     publisher = gets.chomp
-    puts 'Please enter the author name:'
+    print 'Please enter the author name: '
     author = gets.chomp
-    puts 'Please enter state of the book: good or bad'
+    print 'Please enter state of the book"(good/bad)": '
     cover_state = gets.chomp
     if cover_state != 'good' && cover_state != 'bad'
       colorize_output(31, 'Invalid state 🚫 ')
       return
     end
-    puts 'Enter the published date of the book: YY-MM-DD'
+    print 'Enter the published date of the book(YY-MM-DD): '
     date = gets.chomp
     book = Book.new(name, publisher, cover_state, date, author)
     @books << book
-    save_data(@books, './data/book.json')
-    colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
-  end
-
-  def add_label
-    puts 'Enter the title of label of the book:\n'
+    print 'Enter the title label of the book: '
     label_title = gets.chomp
-    puts 'Enter label color of the book:\n'
+    print 'Enter the label color of the book: '
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
     @labels << new_label
     save_data(@labels, './data/label.json')
-    colorize_output(32, "label '#{label_title}' was added successfully 🤹‍♂️✅!")
+    save_data(@books, './data/book.json')
+    colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
+    puts '---------------------------------------------------'
   end
+
+  # def add_label
+  #   if @labels.nil?
+  #     @labels = []
+  #   end
+  #   puts 'Enter the title of label of the book:\n'
+  #   label_title = gets.chomp
+  #   puts 'Enter label color of the book:\n'
+  #   label_color = gets.chomp
+  #   label = Label.new(label_title, label_color)
+  #   @labels << label
+  #   save_data(@labels, './data/label.json')
+  #   colorize_output(32, "label '#{label_title}' was added successfully 🤹‍♂️✅!")
+  # end
 
   def list_all_books
     @books = read_data('./data/book.json')
@@ -67,12 +79,13 @@ class App
 
   def list_all_labels
     @labels = read_data('./data/label.json')
-    if @labels.empty?
+    if @labels.nil? || @labels.empty?
       colorize_output(31, 'No labels found')
     else
       puts "------------------------\n"
-      @label.each do |label|
-        print "ID: #{label.id} , Label-Title: #{label.title} , Color: #{label.color}\n"
+      @labels.each do |label|
+        puts label.inspect
+        print "ID: #{label['label_id']} , Label-Title: #{label['title']} , Color: #{label['color']}\n"
       end
       puts "--------------------------\n\n"
     end
