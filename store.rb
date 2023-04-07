@@ -2,13 +2,13 @@ require 'json'
 
 class Store
   MUSIC_FILE = './data/music_album.json'.freeze
-  GENRE_FILE = './data/genre.json'.freeze
+  GENRE_FILE = './data/genre.json'
   def initialize(app)
     @app = app
   end
 
   def save_data
-    # save_genre
+    save_genre
     save_music_album
   end
 
@@ -19,10 +19,10 @@ class Store
 
   private
 
-  # def save_genre
-  #   genre = @app.list_all_genres.map(&:to_h)
-  #   File.write(GENRE_FILE, JSON.generate(genre))
-  # end
+  def save_genre
+    genre = @app.list_all_genres.map(&:to_h)
+    File.write(GENRE_FILE, JSON.generate(genre))
+  end
 
   def save_music_album
     music_album = @app.list_all_music_albums.map(&:to_h)
