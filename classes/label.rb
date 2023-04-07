@@ -1,4 +1,4 @@
-require_relative 'item'
+require_relative '../item'
 
 class Label < Item
   attr_reader :id, :items
@@ -14,7 +14,7 @@ class Label < Item
 
   def add_item(item)
     items << item
-    item.labels << self
+    item.label = self
   end
 
   def to_h
