@@ -1,6 +1,8 @@
+require_relative 'game'
+
 class Author
-  attr_accessor :first_name, :last_name
-  attr_reader :items, :id
+  attr_accessor :first_name, :last_name, :items
+  attr_reader :id
 
   def initialize(first_name, last_name)
     # Generate a random ID between 1 and 1000
@@ -11,13 +13,15 @@ class Author
   end
 
   def add_item(item)
-    # Add the item to the array of items
-    @items << item
-    # Set the item's author to this author
-    item.author = self
+    @items.push(item)
+    item.add_author(self)
   end
 
   def full_name
     "#{@first_name} #{@last_name}"
+  end
+
+  def to_h
+    { id: @id, author: "#{@first_name} #{@last_name}" }
   end
 end
