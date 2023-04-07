@@ -127,20 +127,6 @@ class App
     end
   end
 
-  def list_all_labels
-    @labels = read_data('./data/label.json')
-    if @labels.nil? || @labels.empty?
-      colorize_output(31, 'No labels found')
-    else
-      puts "------------------------\n"
-      @labels.each do |label|
-        puts label.inspect
-        print "ID: #{label['label_id']} , Label-Title: #{label['title']} , Color: #{label['color']}\n"
-      end
-      puts "--------------------------\n\n"
-    end
-  end
-
   def list_all_authors
     if @authors.empty?
       puts 'No Author found'
