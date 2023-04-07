@@ -12,7 +12,7 @@ def select_option(opt, app)
     10 => -> { app.list_all_lables },
     11 => -> { app.list_all_authors },
     12 => -> { app.list_all_sources },
-    13 => lambda {
+    0 => lambda {
       puts 'Thanks for using this app'
       app.close
       exit

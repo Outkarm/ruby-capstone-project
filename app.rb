@@ -47,7 +47,7 @@ class App
     music_album = MusicAlbum.new(name, publish_date, on_spotify)
     @music_albums << music_album
     puts '*New album added successfully!', music_album.to_s
-    @store.save_data.save_music_album
+    @store.save_data
   end
 
   def close
