@@ -10,7 +10,7 @@ def select_option(opt, app)
     7 => :list_all_genres,
     8 => :list_all_movies,
     9 => :list_all_games,
-    0 => :exit_app
+    13 => :exit_app
   }
 
   action = options[opt]

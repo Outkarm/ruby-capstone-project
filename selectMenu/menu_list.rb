@@ -13,5 +13,5 @@ def menu_list
   puts '10 - List all labels'
   puts '11 - List all authors'
   puts '12 - List all sources'
-  puts '13 - Exit'
+  puts '13 - Exit app'
 end
