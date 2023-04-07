@@ -21,6 +21,9 @@ class App
     @genres = genres
     @games = []
     @authors = []
+    @labels ||= []
+    @store = Store.new(self)
+    # @store.load_data
   end
 
   def add_game
@@ -42,9 +45,7 @@ class App
     @authors << author.to_h
     puts "Game '#{title}' added with ID #{game.id}."
     puts "Author '#{author.full_name}' added with ID #{author.id}."
-    @labels ||= []
-    @store = Store.new(self)
-    @store.load_data
+    @store.save_game_data
   end
 
   def colorize_output(color_code, statements)
@@ -134,6 +135,28 @@ class App
       puts '# Authors'
       @authors.each_with_index do |author, i|
         puts "#{i + 1}. #{author}"
+      end
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts 'No music genres found'
+    else
+      puts '# Genres'
+      @genres.each_with_index do |genre, i|
+        puts "#{i + 1}. #{genre}"
+      end
+    end
+  end
+
+  def list_all_music_albums
+    if @music_albums.empty?
+      puts 'No music albums found'
+    else
+      puts '# Music Albums'
+      @music_albums.each_with_index do |music_album, i|
+        puts "#{i + 1}. #{music_album}"
       end
     end
   end
