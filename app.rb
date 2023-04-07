@@ -62,8 +62,8 @@ class App
     else
       puts 'Book List:'
       @books.each_with_index do |book, index|
-        print "#{index + 1}-Name: #{book['name']}, Publisher: #{book['publisher']},
-       Cover state: #{book['cover_state']}, Published date: #{book['publish_date']}, Author: #{book['author']}\n\n"
+        print "#{index + 1}-Name: #{book.name}, Publisher: #{book.publisher},
+       Cover state: #{book.cover_state}, Published date: #{book.publish_date}, Author: #{book.author}\n\n"
       end
     end
   end
