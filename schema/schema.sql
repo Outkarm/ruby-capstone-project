@@ -32,6 +32,6 @@ CREATE TABLE book (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   publish_date DATE,
   publisher VARCHAR(100) NOT NULL,
-  cover_state VARCHAR(100),
+  cover_state VARCHAR(100) NOT NULL,
   label_id INT REFERENCES labels(id)
 );
