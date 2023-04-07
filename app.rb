@@ -23,7 +23,7 @@ class App
     @authors = []
     @labels ||= []
     @store = Store.new(self)
-    # @store.load_data
+    @store.load_data
   end
 
   def add_game
@@ -34,7 +34,6 @@ class App
     multiplayer = gets.chomp.downcase == 'true'
     print 'Enter game last played date (YYYY-MM-DD): '
     last_played_at = gets.chomp
-
     print 'Enter author first name: '
     first_name = gets.chomp
     print 'Enter author last name: '
