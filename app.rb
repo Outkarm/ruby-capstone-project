@@ -59,21 +59,21 @@ class App
     label_color = gets.chomp
     new_label = Label.new(label_title, label_color)
     @labels << new_label
-    # save_data(@labels, './data/label.json')
-    # save_data(@books, './data/book.json')
+    save_data(@labels, './data/label.json')
+    save_data(@books, './data/book.json')
     colorize_output(32, "Book '#{name}' was added successfully 🤹‍♂️✅!")
     puts '---------------------------------------------------'
   end
 
   def list_all_books
-    # @books = read_data('./data/book.json')
+    @books = read_data('./data/book.json')
     if @books.empty?
       colorize_output(31, 'No books found 🚫 ')
     else
       puts 'Book List:'
       @books.each_with_index do |book, index|
-        print "#{index + 1}-Name: #{book.name}, Publisher: #{book.publisher},
-       Cover state: #{book.cover_state}, Published date: #{book.publish_date}, Author: #{book.author}\n\n"
+        print "#{index + 1}-Name: #{book['name']}, Publisher: #{book['publisher']},
+       Cover state: #{book['cover_state']}, Published date: #{book['publish_date']}, Author: #{book['author']}\n\n"
       end
     end
   end
@@ -101,18 +101,9 @@ class App
     @store = Store.new(self)
     @store.load_data
   end
-
-  def colorize_output(color_code, statements)
-    puts "\e[#{color_code}m#{statements}\e[0m"
-  end
-
-  def colorize_outprint(color_code, statements)
-    print "\e[#{color_code}m#{statements}\e[0m"
-  end
-
   
   def list_all_labels
-    # @labels = read_data('./data/label.json')
+    @labels = read_data('./data/label.json')
     if @labels.nil? || @labels.empty?
       colorize_output(31, 'No labels found')
     else
