@@ -9,7 +9,7 @@ class Item
     @archived = archived
     @label = label
     @genre = genre
-    @authors = authors
+    @authors = author
     @genre = nil
     @author = nil
     @source = nil
