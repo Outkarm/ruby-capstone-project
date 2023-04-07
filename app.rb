@@ -1,10 +1,9 @@
-
 require_relative 'selectMenu/select'
 require_relative 'selectMenu/menu_list'
 require_relative 'classes/book'
 require_relative 'classes/label'
-require_relative './music_album'
-require_relative './genre'
+# require_relative '.musicAlbum/music_album'
+# require_relative './genre'
 require_relative 'data/preserve'
 
 class App
@@ -56,20 +55,6 @@ class App
     puts '---------------------------------------------------'
   end
 
-  # def add_label
-  #   if @labels.nil?
-  #     @labels = []
-  #   end
-  #   puts 'Enter the title of label of the book:\n'
-  #   label_title = gets.chomp
-  #   puts 'Enter label color of the book:\n'
-  #   label_color = gets.chomp
-  #   label = Label.new(label_title, label_color)
-  #   @labels << label
-  #   save_data(@labels, './data/label.json')
-  #   colorize_output(32, "label '#{label_title}' was added successfully 🤹‍♂️✅!")
-  # end
-
   def list_all_books
     @books = read_data('./data/book.json')
     if @books.empty?
@@ -79,7 +64,9 @@ class App
       @books.each_with_index do |book, index|
         print "#{index + 1}-Name: #{book['name']}, Publisher: #{book['publisher']},
        Cover state: #{book['cover_state']}, Published date: #{book['publish_date']}, Author: #{book['author']}\n\n"
-
+      end
+    end
+  end
 
   def list_all_music_albums
     if @music_albums.empty?
