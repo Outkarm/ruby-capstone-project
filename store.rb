@@ -33,8 +33,18 @@ class Store
     genres = read_file(filename)
     genres.each do |genre|
       name = genre['name']
-
       array << Genre.new(name)
+    end
+  end
+
+  def load_music_albums(filename, array)
+    music_albums = read_file(filename)
+    music_albums.each do |music_album|
+      name = music_album['name']
+      artist = music_album['artist']
+      publish_date = music_album['publish_date']
+      on_spotify = music_album['on_spotify']
+      array << MusicAlbum.new(name, artist, publish_date, on_spotify)
     end
   end
 end
