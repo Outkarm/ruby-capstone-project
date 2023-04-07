@@ -8,8 +8,7 @@ class Item
     @publish_date = publish_date
     @archived = archived
     @label = label
-    @name = name
-    @genre = genre
+    @genre = nil
     @author = nil
     @source = nil
   end

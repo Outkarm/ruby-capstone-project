@@ -2,9 +2,11 @@ require_relative 'selectMenu/select'
 require_relative 'selectMenu/menu_list'
 require_relative 'classes/book'
 require_relative 'classes/label'
-# require_relative '.musicAlbum/music_album'
-# require_relative './genre'
 require_relative 'data/preserve'
+require_relative './musicAlbum/music_album'
+require_relative './musicAlbum/genre'
+require_relative './store'
+require_relative './input'
 
 class App
   attr_accessor :books, :label, :music_albums, :genres
@@ -15,6 +17,8 @@ class App
     @music_albums = music_albums
     @genres = genres
     @labels ||= []
+    @store = Store.new(self)
+    @store.load_data
   end
 
   def colorize_output(color_code, statements)
@@ -66,6 +70,10 @@ class App
        Cover state: #{book['cover_state']}, Published date: #{book['publish_date']}, Author: #{book['author']}\n\n"
       end
     end
+    @music_albums = []
+    @genres = []
+    @store = Store.new(self)
+    @store.load_data
   end
 
   def list_all_music_albums
@@ -116,5 +124,13 @@ class App
     music_album = MusicAlbum.new(name, publish_date, on_spotify)
     @music_albums << music_album
     puts '*New album added successfully!', music_album.to_s
+    @store.save_data
+  end
+
+  def close
+    @store.save_data
+    puts '--------------------------------'
+    puts 'DATA SAVED SUCCESSFULLY'
+    puts '--------------------------------'
   end
 end
