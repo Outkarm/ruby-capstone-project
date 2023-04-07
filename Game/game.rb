@@ -2,7 +2,7 @@ require_relative '../item'
 require 'date'
 
 class Game < Item
-  attr_accessor :multiplayer, :last_played_at, :id, :title, :first_name, :last_name, :games
+  attr_accessor :multiplayer, :last_played_at, :publish_date, :id, :title
 
   def initialize(title, multiplayer, last_played_at, first_name, last_name)
     super(publish_date)
@@ -11,11 +11,6 @@ class Game < Item
     @last_played_at = last_played_at
     @first_name = first_name
     @last_name = last_name
-    @games = []
-  end
-
-  def push_game(game)
-    @games << game.to_h
   end
 
   def can_be_archived?
