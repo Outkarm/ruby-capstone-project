@@ -28,4 +28,13 @@ class Store
     music_album = @app.music_album_list.map(&:to_h)
     File.write(@music_file, JSON.generate(music_album))
   end
+
+  def load_genre(filename, array)
+    genres = read_file(filename)
+    genres.each do |genre|
+      name = genre['name']
+
+      array << Genre.new(name)
+    end
+  end
 end
