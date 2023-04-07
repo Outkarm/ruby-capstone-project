@@ -1,12 +1,15 @@
 require_relative './music_album'
 require_relative './genre'
+require_relative './store'
 
 class App
   attr_accessor :music_albums, :genres
 
   def initialize
-    @music_albums = music_albums
-    @genres = genres
+    @music_albums = []
+    @genres = []
+    @store = Store.new(self)
+    @storage.load_data
   end
 
   def list_all_music_albums
