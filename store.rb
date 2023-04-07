@@ -19,14 +19,14 @@ class Store
 
   private
 
-  def save_label
-    genre = @app.label_list.map(&:to_h)
-    File.write(@genre_file, JSON.generate(genre))
+  def save_genre
+    genre = @app.list_all_genres.map(&:to_h)
+    File.write(GENRE_FILE, JSON.generate(genre))
   end
 
   def save_music_albums
-    music_album = @app.music_album_list.map(&:to_h)
-    File.write(@music_file, JSON.generate(music_album))
+    music_album = @app.list_all_music_albums.map(&:to_h)
+    File.write(MUSIC_FILE, JSON.generate(music_album))
   end
 
   def load_genre(filename, array)
@@ -37,7 +37,7 @@ class Store
     end
   end
 
-  def load_music_albums(filename, array)
+  def load_music_album(filename, array)
     music_albums = read_file(filename)
     music_albums.each do |music_album|
       name = music_album['name']
