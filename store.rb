@@ -8,7 +8,7 @@ class Store
   end
 
   def save_data
-    save_genre
+    # save_genre
     save_music_album
   end
 
@@ -19,12 +19,12 @@ class Store
 
   private
 
-  def save_genre
-    genre = @app.list_all_genres.map(&:to_h)
-    File.write(GENRE_FILE, JSON.generate(genre))
-  end
+  # def save_genre
+  #   genre = @app.list_all_genres.map(&:to_h)
+  #   File.write(GENRE_FILE, JSON.generate(genre))
+  # end
 
-  def save_music_albums
+  def save_music_album
     music_album = @app.list_all_music_albums.map(&:to_h)
     File.write(MUSIC_FILE, JSON.generate(music_album))
   end
@@ -41,10 +41,9 @@ class Store
     music_albums = read_file(filename)
     music_albums.each do |music_album|
       name = music_album['name']
-      artist = music_album['artist']
       publish_date = music_album['publish_date']
       on_spotify = music_album['on_spotify']
-      array << MusicAlbum.new(name, artist, publish_date, on_spotify)
+      array << MusicAlbum.new(name, publish_date, on_spotify)
     end
   end
   def read_file(filename)
@@ -54,7 +53,6 @@ class Store
     data = file.read
     file.close
     return JSON.parse(data) unless data.empty?
-
     []
   end
 end

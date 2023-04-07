@@ -6,7 +6,7 @@ class MusicAlbum < Item
   def initialize(name, published_date, on_spotify, genres: [])
     super(publish_date)
     @name = name
-    @published_date = Date.parse(published_date)
+    @published_date = published_date
     @on_spotify = on_spotify
     @genres = genres
   end

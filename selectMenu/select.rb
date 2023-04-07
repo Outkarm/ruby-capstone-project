@@ -45,6 +45,7 @@ def select_option(opt, app)
     app.list_all_sources
   when :exit_app
     puts 'Thanks for using this app'
+    app.close
     exit
   end
 
@@ -86,6 +87,7 @@ def select_option(opt, app)
 
   def exit_app
     puts 'Thanks for using this app'
+    @app.close
     exit
   end
 end

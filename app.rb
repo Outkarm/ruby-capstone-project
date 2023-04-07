@@ -48,4 +48,11 @@ class App
     @music_albums << music_album
     puts '*New album added successfully!', music_album.to_s
   end
+
+  def close 
+    @store.save_data
+    puts '--------------------------------'
+    puts 'DATA SAVED SUCCESSFULLY'
+    puts '--------------------------------'
+  end
 end
