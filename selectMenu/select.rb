@@ -48,8 +48,6 @@ def select_option(opt, app)
     exit
   end
 
-  private
-
   def add_book
     @app.add_book
   end

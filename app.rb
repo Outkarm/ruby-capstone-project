@@ -1,6 +1,7 @@
 require_relative './musicAlbum/music_album'
 require_relative './musicAlbum/genre'
 require_relative './store'
+require_relative './input'
 
 class App
   attr_accessor :music_albums, :genres
