@@ -36,10 +36,4 @@ class Item
       (Date.today.year - publish_date.year) > 10
     end
   end
-
-  def add_genre(genre)
-    @genre = genre
-    genre.items << self unless genre.items.include?(self)
-  end
-  
 end

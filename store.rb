@@ -46,6 +46,7 @@ class Store
       array << MusicAlbum.new(name, publish_date, on_spotify)
     end
   end
+
   def read_file(filename)
     return [] unless File.exist?(filename)
 
@@ -53,6 +54,7 @@ class Store
     data = file.read
     file.close
     return JSON.parse(data) unless data.empty?
+
     []
   end
 end
