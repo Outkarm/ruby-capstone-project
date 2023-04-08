@@ -121,6 +121,11 @@ To run tests, run the following command:
 - Twitter: [@outkarm](https://twitter.com/outkarm)
 - LinkedIn: [John (Koy OutKarm) Kpordje](https://linkedin.com/in/https://www.linkedin.com/in/koyoutkarm/)
 
+### 👤 **Amaka Laura Konwea**:
+- GitHub: [@lawrahkonwea](https://github.com/lawrahkonwea)
+- Twitter: [@lawrah_xo](https://twitter.com/lawrah_xo)
+- LinkedIn: [@laura--LinkedIn](https://www.linkedin.com/in/amakalaurakonwea/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
