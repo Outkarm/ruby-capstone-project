@@ -47,7 +47,6 @@ class App
     @store.save_game_data
     @store.load_data
   end
-  end
 
   def colorize_output(color_code, statements)
     puts "\e[#{color_code}m#{statements}\e[0m"
@@ -100,30 +99,6 @@ class App
     end
   end
 
-  def add_game
-    puts 'Adding a new game...'
-    print 'Enter game title: '
-    title = gets.chomp
-    print 'Enter game multiplayer (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter game last played date (YYYY-MM-DD): '
-    last_played_at = gets.chomp
-
-    print 'Enter author first name: '
-    first_name = gets.chomp
-    print 'Enter author last name: '
-    last_name = gets.chomp
-    game = Game.new(title, multiplayer, last_played_at, first_name, last_name)
-    author = Author.new(first_name, last_name)
-    @games << game.to_h
-    @authors << author.to_h
-    puts "Game '#{title}' added with ID #{game.id}."
-    puts "Author '#{author.full_name}' added with ID #{author.id}."
-    @labels ||= []
-    @store = Store.new(self)
-    @store.load_data
-  end
-  
   def list_all_labels
     @labels = read_data('./data/label.json')
     if @labels.nil? || @labels.empty?
@@ -138,10 +113,6 @@ class App
     end
   end
 
-  def list_all_genres
-    if @genres.empty?
-      puts 'No music genres found'
-      
   def list_all_games
     if @games.empty?
       puts 'No Games found'
