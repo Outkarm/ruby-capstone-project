@@ -84,7 +84,8 @@ class Store
       multiplayer = game['multiplayer']
       first_name = game['first_name']
       last_name = game['label_title']
-      array << Game.new(title, multiplayer, last_played_at, first_name, last_name)
+      games = Game.new(title, multiplayer, last_played_at, first_name, last_name)
+      array << games.to_h
     end
   end
 
