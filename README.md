@@ -62,6 +62,7 @@ Is a command line interface app built with Ruby that will help users to keep a r
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### :point_right: [Zoom video link](https://drive.google.com/file/d/1WpFrI-6XafHeIGYG0GpLaAhQ0vsXosh-/view?usp=sharing)
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
