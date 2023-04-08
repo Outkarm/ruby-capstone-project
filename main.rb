@@ -5,7 +5,6 @@ require_relative 'app'
 class Main
   def start
     puts 'welcome'
-    menu_list
     app = App.new
     loop do
       menu_list

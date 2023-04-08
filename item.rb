@@ -10,7 +10,7 @@ class Item
     @label = label
     @name = name
     @genre = genre
-    @authors = authors
+    @authors = author
     @genre = nil
     @author = nil
     @source = nil

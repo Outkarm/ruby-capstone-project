@@ -12,18 +12,18 @@ require_relative './store'
 require_relative './input'
 
 class App
-  attr_accessor :books, :label, :music_albums, :genres, :items, :authors
+  attr_accessor :books, :label, :music_albums, :genres, :items, :authors, :games
 
   def initialize
     @books = []
     @label = []
-    @music_albums = music_albums
-    @genres = genres
+    @music_albums = []
+    @genres = []
     @labels ||= []
     @games = []
     @authors = []
-    @labels ||= []
     @store = Store.new(self)
+    @store.load_data
   end
 
   def add_game
@@ -45,7 +45,6 @@ class App
     puts "Game '#{title}' added with ID #{game.id}."
     puts "Author '#{author.full_name}' added with ID #{author.id}."
     @store.save_game_data
-    @store.load_data
   end
 
   def colorize_output(color_code, statements)
