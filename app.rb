@@ -10,7 +10,6 @@ require_relative './musicAlbum/music_album'
 require_relative './musicAlbum/genre'
 require_relative './store'
 require_relative './input'
-require_relative 'data/preserve'
 
 class App
   attr_accessor :books, :label, :music_albums, :genres, :items, :authors, :games

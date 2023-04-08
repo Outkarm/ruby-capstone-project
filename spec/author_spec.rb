@@ -36,7 +36,7 @@ RSpec.describe Author do
 
   describe '#to_h' do
     it 'returns a hash with the author\'s ID and full name' do
-      expect(author.to_h).to eq({ id: author.id, author: 'John Doe', first_name: 'John', last_name: 'Doe'})
+      expect(author.to_h).to eq({ id: author.id, author: 'John Doe', first_name: 'John', last_name: 'Doe' })
     end
   end
 end

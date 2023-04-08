@@ -61,7 +61,7 @@ class Store
     authors.each do |author|
       first_name = author['first_name']
       last_name = author['last_name']
-      author = Author.new(@first_name=first_name, @last_name=last_name)
+      author = Author.new(@first_name = first_name, @last_name = last_name)
       array << author.to_h
     end
   end
