@@ -22,9 +22,30 @@ class App
     @labels ||= []
     @games = []
     @authors = []
+    @labels ||= []
     @store = Store.new(self)
-    @store.load_data
   end
+
+  def add_game
+    puts 'Adding a new game...'
+    print 'Enter game title: '
+    title = gets.chomp
+    print 'Enter game multiplayer (true/false): '
+    multiplayer = gets.chomp.downcase == 'true'
+    print 'Enter game last played date (YYYY-MM-DD): '
+    last_played_at = gets.chomp
+    print 'Enter author first name: '
+    first_name = gets.chomp
+    print 'Enter author last name: '
+    last_name = gets.chomp
+    game = Game.new(title, multiplayer, last_played_at, first_name, last_name)
+    author = Author.new(first_name, last_name)
+    @games << game.to_h
+    @authors << author.to_h
+    puts "Game '#{title}' added with ID #{game.id}."
+    puts "Author '#{author.full_name}' added with ID #{author.id}."
+    @store.save_game_data
+    @store.load_data
   end
 
   def colorize_output(color_code, statements)
@@ -78,30 +99,6 @@ class App
     end
   end
 
-  def add_game
-    puts 'Adding a new game...'
-    print 'Enter game title: '
-    title = gets.chomp
-    print 'Enter game multiplayer (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter game last played date (YYYY-MM-DD): '
-    last_played_at = gets.chomp
-
-    print 'Enter author first name: '
-    first_name = gets.chomp
-    print 'Enter author last name: '
-    last_name = gets.chomp
-    game = Game.new(title, multiplayer, last_played_at, first_name, last_name)
-    author = Author.new(first_name, last_name)
-    @games << game.to_h
-    @authors << author.to_h
-    puts "Game '#{title}' added with ID #{game.id}."
-    puts "Author '#{author.full_name}' added with ID #{author.id}."
-    @labels ||= []
-    @store = Store.new(self)
-    @store.load_data
-  end
-  
   def list_all_labels
     @labels = read_data('./data/label.json')
     if @labels.nil? || @labels.empty?
@@ -116,10 +113,6 @@ class App
     end
   end
 
-  def list_all_genres
-    if @genres.empty?
-      puts 'No music genres found'
-      
   def list_all_games
     if @games.empty?
       puts 'No Games found'
@@ -138,6 +131,28 @@ class App
       puts '# Authors'
       @authors.each_with_index do |author, i|
         puts "#{i + 1}. #{author}"
+      end
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts 'No music genres found'
+    else
+      puts '# Genres'
+      @genres.each_with_index do |genre, i|
+        puts "#{i + 1}. #{genre}"
+      end
+    end
+  end
+
+  def list_all_music_albums
+    if @music_albums.empty?
+      puts 'No music albums found'
+    else
+      puts '# Music Albums'
+      @music_albums.each_with_index do |music_album, i|
+        puts "#{i + 1}. #{music_album}"
       end
     end
   end
