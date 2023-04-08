@@ -115,7 +115,7 @@ To run tests, run the following command:
 - Twitter: [@Aman_on_Twitter](https://twitter.com/Amexworku)
 - LinkedIn: [@Aman_on_LinkedIn](https://www.linkedin.com/in/aman-worku-tsegaw/)
   
-###👤 **John (Koy OutKarm) Kpordje**
+### 👤 **John (Koy OutKarm) Kpordje**
 
 - GitHub: [@Outkarm](https://github.com/Outkarm)
 - Twitter: [@outkarm](https://twitter.com/outkarm)
