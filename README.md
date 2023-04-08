@@ -115,10 +115,11 @@ To run tests, run the following command:
 - Twitter: [@Aman_on_Twitter](https://twitter.com/Amexworku)
 - LinkedIn: [@Aman_on_LinkedIn](https://www.linkedin.com/in/aman-worku-tsegaw/)
   
-### 👤 **Salwa Ballouti**:
-- GitHub: [@Salwa99](https://github.com/Salwa99)
-- Twitter: [@SalwaBallouti](https://twitter.com/salwa_ballouti)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/salwa-ballouti)
+###👤 **John (Koy OutKarm) Kpordje**
+
+- GitHub: [@Outkarm](https://github.com/Outkarm)
+- Twitter: [@outkarm](https://twitter.com/outkarm)
+- LinkedIn: [John (Koy OutKarm) Kpordje](https://linkedin.com/in/https://www.linkedin.com/in/koyoutkarm/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
