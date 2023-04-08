@@ -8,5 +8,5 @@ def menu_list
   puts '5 - List all books          11 - List all authors'
   puts '6 - List all music albums   12 - List all sources'
   puts '--------------------------------------------------------'
-  puts '0 - Exit'
+  puts '13 - Exit'
 end
